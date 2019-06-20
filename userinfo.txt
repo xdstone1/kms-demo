@@ -1,0 +1,5 @@
+[UserInfo]
+UserKey=LTAI69aew80CBvIW
+UserSec=iOkCT3lLEtmeYB6TcWNsFaBlHcuz60
+RegionId=ap-southeast-1
+KmsKeyId=80a309f8-2752-4c7b-99f2-08c9af7413a0
