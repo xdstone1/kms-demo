@@ -2,7 +2,7 @@
 from aliyunsdkcore import client
 from aliyunsdkkms.request.v20160120 import DecryptRequest
 
-import ConfigParser
+import configparser
 import json
 
 from Crypto.Cipher import AES 
@@ -12,7 +12,7 @@ def aes256unpad(s):
 	return s[:-ord(s[len(s)-1:])] 
 
 if __name__ == '__main__':
-	Config = ConfigParser.ConfigParser();
+	Config = configparser.ConfigParser();
 	Config.read("./userinfo.txt")
 	accesskeyid = Config.get("UserInfo","UserKey");
 	accesssecret = Config.get("UserInfo","UserSec");
@@ -31,11 +31,11 @@ if __name__ == '__main__':
 		with open('cipherfile.txt','r') as cipher:
 			ciphercontent = cipher.read()
 			cipherfile = base64.b64decode(ciphercontent)
-			print "cipher file content:"
-			print ciphercontent
-			print ''
+			print("cipher file content:")
+			print(ciphercontent)
+			print('')
 			iv = cipherfile[:AES.block_size]
 			aes = AES.new(datakey, AES.MODE_CBC, iv)
-			print 'after decryption:'
-			print aes.decrypt(cipherfile[AES.block_size:]).decode('utf-8') #use datakey to decrypt the content of file: cipherfile.txt and print it out
+			print('after decryption:')
+			print(aes.decrypt(cipherfile[AES.block_size:]).decode('utf-8')) #use datakey to decrypt the content of file: cipherfile.txt and print it out
 
