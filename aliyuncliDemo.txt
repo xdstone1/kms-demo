@@ -1,23 +1,26 @@
-root@iZt4n5yda1tq4i73voeswjZ:~# aliyuncli kms  Encrypt --AccessKeyId LTAI69aew80CBvIW --AccessKeySecret iOkCT3lLEtmeYB6TcWNsFaBlHcuz60 --KeyId 80a309f8-2752-4c7b-99f2-08c9af7413a0 --Plaintext "this is a test" 
+root@iZt4n5yda1tq4i73voeswjZ:~# aliyun kms  Encrypt --KeyId 80a309f8-2752-4c7b-99f2-08c9af7413a0 --Plaintext "this is a test" 
 {
-    "KeyId": "80a309f8-2752-4c7b-99f2-08c9af7413a0", 
-    "RequestId": "1cbebe8a-037a-450d-9976-25ee4eba4253", 
-    "CiphertextBlob": "MmVkZmQ1N2UtNjg4ZC00NTU1LTkyZTMtMWY5MDEyMWZiZjZjdllFekUxSzVVazd1ekVyaThnYk1oS2I0MU9aK29namtBQUFBQUFBQUFBQ0lTYXpzK2JpN3N4QmYrUFM4ZVpDWS9Va2V6aC9Kbk5UbUwxSzBJcUk9"
+	"CiphertextBlob": "MmVkZmQ1N2UtNjg4ZC00NTU1LTkyZTMtMWY5MDEyMWZiZjZjNy92VmlobmZQSHpaOVdvSEFZdXlGb3FLeFlOZXNvRWhBQUFBQUFBQUFBRDZzb2JEQ1lpSjVFekJvTXg1SkE0UXVXdTRUOVY3WnhIYmg0Yk9FTWM9",
+	"KeyId": "80a309f8-2752-4c7b-99f2-08c9af7413a0",
+	"KeyVersionId": "2edfd57e-688d-4555-92e3-1f90121fbf6c",
+	"RequestId": "dd4dc415-eb3d-41a9-b945-9e39c94a91e8"
 }
-root@iZt4n5yda1tq4i73voeswjZ:~# 
-root@iZt4n5yda1tq4i73voeswjZ:~# 
-root@iZt4n5yda1tq4i73voeswjZ:~# aliyuncli kms  Decrypt --AccessKeyId LTAI69aew80CBvIW --AccessKeySecret iOkCT3lLEtmeYB6TcWNsFaBlHcuz60 --KeyId 80a309f8-2752-4c7b-99f2-08c9af7413a0 --CiphertextBlob MmVkZmQ1N2UtNjg4ZC00NTU1LTkyZTMtMWY5MDEyMWZiZjZjVm8zTVVLTWZqU2hsVGRSTmYySityUWVEQnR1VVRQT3FBQUFBQUFBQUFBQUxYY01LM3NybVloa0Z2QWhMUzdSeWw5NUJUVVlROENvUUE4cUx1VUk9
+
+root@iZt4nfba36yw0wac1tmbpjZ:~/kms-demo/simple-case/kms-demo# aliyun kms Decrypt --CiphertextBlob MmVkZmQ1N2UtNjg4ZC00NTU1LTkyZTMtMWY5MDEyMWZiZjZjUWVkWnBObk44ZnVDZmtTRWpOdmRMb2ZhRzF6Y3lBOHpBQUFBQUFBQUFBQkpNa1JCUUtWUDA4SURPTlo3L3Evb3pwYndtdHB4NENKaDNrOTFFYjQ9
 {
-    "Plaintext": "this is a test", 
-    "KeyId": "80a309f8-2752-4c7b-99f2-08c9af7413a0", 
-    "RequestId": "68ad395e-00d9-444a-85de-2a54134a34f0"
+	"KeyId": "80a309f8-2752-4c7b-99f2-08c9af7413a0",
+	"KeyVersionId": "2edfd57e-688d-4555-92e3-1f90121fbf6c",
+	"Plaintext": "this is a test",
+	"RequestId": "a74054c2-64f1-4971-8914-23b1536dc424"
 }
-root@iZt4n5yda1tq4i73voeswjZ:~# 
-aliyuncli kms GenerateDataKey --AccessKeyId LTAI69aew80CBvIW --AccessKeySecret iOkCT3lLEtmeYB6TcWNsFaBlHcuz60 --KeyId 80a309f8-2752-4c7b-99f2-08c9af7413a0 
+
+
+root@iZt4nfba36yw0wac1tmbpjZ:~/kms-demo/simple-case/kms-demo# aliyun kms GenerateDataKey --KeyId 80a309f8-2752-4c7b-99f2-08c9af7413a0
 {
-    "Plaintext": "tSJqGjEkILETxmjK5BLkLjd1VuDiiNz7+GjdNMRN5Rk=", 
-    "KeyId": "80a309f8-2752-4c7b-99f2-08c9af7413a0", 
-    "RequestId": "f36c8c3d-4612-44bf-a63a-ec6fe94b237f", 
-    "CiphertextBlob": "MmVkZmQ1N2UtNjg4ZC00NTU1LTkyZTMtMWY5MDEyMWZiZjZjdWNaZWxXdzE0MnQydkpJMDl3dDh4TUQzQktrSHJWSjNBQUFBQUFBQUFBQjdnempOR3RGVnNzTUtPN2RmRzRCblpQdmlOTisvVUFlVlQwK3cvcmNkMUUyZjlLeVNValdHRHdlUlY2U3VjV1pBdlBCVHU5b3JEUHJqUllBPQ=="
+	"CiphertextBlob": "MmVkZmQ1N2UtNjg4ZC00NTU1LTkyZTMtMWY5MDEyMWZiZjZjZ3JRcXZiY080T1UvQ01lelRkYTBKdmpRelNoMG9Jak9BQUFBQUFBQUFBREo5NGluVVhreXBpWit4SUFCNHF1ZTY0bFZDajBJRnNUY1lHTmZLNCtyMGUvbVA3MWNhbGswOW8yMEJ3Sm9vZGkyZkxlZHZPdDZaUStyWENZPQ==",
+	"KeyId": "80a309f8-2752-4c7b-99f2-08c9af7413a0",
+	"KeyVersionId": "2edfd57e-688d-4555-92e3-1f90121fbf6c",
+	"Plaintext": "tQTDtgLUUSYU111zL23+0nLe7hmtE7GCl9jJBlz+cjA=",
+	"RequestId": "895fdac7-eff3-49d2-b059-4eeb30cf8c87"
 }
 
