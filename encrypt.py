@@ -2,7 +2,16 @@
 from aliyunsdkcore import client
 from aliyunsdkkms.request.v20160120 import GenerateDataKeyRequest
 
-import ConfigParser
+
+#import sys
+
+#from typing import List
+
+#from alibabacloud_kms20160120.client import Client as Kms20160120Client
+#from alibabacloud_tea_openapi import models as open_api_models
+#from alibabacloud_kms20160120 import models as kms_20160120_models
+
+import configparser
 import json
 
 from Crypto.Cipher import AES 
@@ -13,7 +22,7 @@ def aes256pad(s):
 	return s + (32 - len(s) % 32) * chr(32 - len(s) % 32)
 
 if __name__ == '__main__':
-	Config = ConfigParser.ConfigParser();
+	Config = configparser.ConfigParser();
 	Config.read("./userinfo.txt")
 	accesskeyid = Config.get("UserInfo","UserKey");
 	accesssecret = Config.get("UserInfo","UserSec");
@@ -35,15 +44,17 @@ if __name__ == '__main__':
 
 	with open('cipherkey','w') as key:
 		key.write(cipherdatakey) # store encrypted datakey into file: cipherkey
-	iv = Random.new().read(AES.block_size)
+	#iv = random.new().read(AES.block_size)
+	iv = '1234567812345678'
 	cipher = AES.new(datakey, AES.MODE_CBC, iv) #use daatakey to initiate an object 
 	with open('password.txt','r') as fp:
 		filedata = aes256pad(fp.read()) #read content of 'password.txt'
-		print "plain text content:"
-		print filedata
-		cipherfile = base64.b64encode(iv + cipher.encrypt(filedata)) #encrypt the content
+		print("plain text content:")
+		print(filedata)
+		cipherfile = base64.b64encode(cipher.encrypt(filedata)) #encrypt the content
+		#cipherfile = base64.b64encode(iv + cipher.encrypt(filedata)) #encrypt the content
 		with open('cipherfile.txt','w') as output:
-			output.write(cipherfile) #write the encrypted content to file: cipherfile.txt
+			output.write(str(cipherfile, encoding='utf-8')) #write the encrypted content to file: cipherfile.txt
 		with open('cipherfile.txt','r') as cipherfile:
-			print "plain text after encryption:"
-			print cipherfile.read() 
+			print("plain text after encryption:")
+			print(cipherfile.read())
