@@ -44,14 +44,14 @@ if __name__ == '__main__':
 
 	with open('cipherkey','w') as key:
 		key.write(cipherdatakey) # store encrypted datakey into file: cipherkey
-	#iv = random.new().read(AES.block_size)
+	#iv = Random.new().read(AES.block_size)
 	iv = '1234567812345678'
 	cipher = AES.new(datakey, AES.MODE_CBC, iv) #use daatakey to initiate an object 
 	with open('password.txt','r') as fp:
 		filedata = aes256pad(fp.read()) #read content of 'password.txt'
 		print("plain text content:")
 		print(filedata)
-		cipherfile = base64.b64encode(cipher.encrypt(filedata)) #encrypt the content
+		cipherfile = base64.b64encode(bytes(iv, encoding='UTF-8')+cipher.encrypt(filedata)) #encrypt the content
 		#cipherfile = base64.b64encode(iv + cipher.encrypt(filedata)) #encrypt the content
 		with open('cipherfile.txt','w') as output:
 			output.write(str(cipherfile, encoding='utf-8')) #write the encrypted content to file: cipherfile.txt
